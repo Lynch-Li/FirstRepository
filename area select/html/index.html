@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>vue.js三级联动</title>
+	<script src="../js/vue.js"></script>
+	<script src="../js/distictData.js"></script>
+	<link rel="stylesheet" href="../css/index.css">
+</head>
+
+<body>
+	<div class="infolist" id="wrap">
+		<label>所在地区：</label>
+		<div class="liststyle">
+			<span id="Province" @click="renderProvince">
+		        <i>{{provinceName}}</i>
+		        <ul :class="[isProvinceActive?show:hide]">
+		            <li @click="selectProvince(item,$event)" v-for="item in province"><a href="javascript:void(0)" alt="">{{item.name}}</a></li>
+		            </ul>
+		        <input type="hidden"  name="cho_Province" :value="provinceCode">
+		    </span>
+			<span id="City" class="" @click="renderCity">
+		        <i>{{cityName}}</i>
+		        <ul :class="[isCityActive?show:hide]">
+		            <li @click="selectCity(item,$event)" v-for="item in city"><a href="javascript:void(0)" alt="请选择城市">{{item.name}}</a></li>
+		        </ul>
+		        <input type="hidden" name="cho_City" :value="cityCode">
+		    </span>
+			<span id="Area" @click="renderArea">
+		        <i>{{areaName}}</i>
+		        <ul :class="[isAreaActive?show:hide]">
+		            <li @click="selectArea(item,$event)" v-for="item in area"><a href="javascript:void(0)" alt="请选择地区">{{item.name}}</a></li>
+		        </ul>
+		        <input type="hidden" name="cho_Area" :value="areaCode">
+		    </span>
+		</div>
+	</div>
+	<script src="../js/index.js"></script>
+	
+</body>
+
+</html>
